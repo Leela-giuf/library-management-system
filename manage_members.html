@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Members - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #0059b3;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .form-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .form-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        .form-box button {
+            padding: 10px 15px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-box button:hover {
+            background-color: #003366;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #c62828;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Manage Members</h1>
+    </header>
+
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="members.html">Members</a>
+        <a href="issue_return.html">Issue/Return</a>
+        <a href="contact.html">Contact</a>
+        <a href="search_books.html">Search Books</a>
+        <a href="admin_login.html">Admin Login</a>
+    </nav>
+
+    <div class="container">
+        <!-- Form to add a new member -->
+        <div class="form-box">
+            <h2>Add New Member</h2>
+            <input type="text" id="memberName" placeholder="Full Name" required>
+            <input type="email" id="memberEmail" placeholder="Email Address" required>
+            <input type="tel" id="memberPhone" placeholder="Phone Number" required>
+            <button onclick="addMember()">Add Member</button>
+        </div>
+
+        <!-- Table to display the members -->
+        <h2>Current Members</h2>
+        <table id="membersTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example member rows (dynamic content will be added here) -->
+                <tr>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td>+91 9876543210</td>
+                    <td><button class="delete-btn" onclick="removeMember(this)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to add a new member to the table
+        function addMember() {
+            const name = document.getElementById("memberName").value;
+            const email = document.getElementById("memberEmail").value;
+            const phone = document.getElementById("memberPhone").value;
+
+            // Check if all fields are filled
+            if (name && email && phone) {
+                const table = document.getElementById("membersTable").getElementsByTagName("tbody")[0];
+                const newRow = table.insertRow();
+
+                newRow.innerHTML = `
+                    <td>${name}</td>
+                    <td>${email}</td>
+                    <td>${phone}</td>
+                    <td><button class="delete-btn" onclick="removeMember(this)">Remove</button></td>
+                `;
+
+                // Clear the input fields
+                document.getElementById("memberName").value = "";
+                document.getElementById("memberEmail").value = "";
+                document.getElementById("memberPhone").value = "";
+            } else {
+                alert("Please fill in all the fields.");
+            }
+        }
+
+        // Function to remove a member
+        function removeMember(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+</body>
+</html>

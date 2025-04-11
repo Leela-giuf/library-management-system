@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue/Return - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #0059b3;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        .form-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 500px;
+        }
+
+        .form-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        .form-box button {
+            padding: 10px 15px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-box button:hover {
+            background-color: #003366;
+        }
+
+        .return-btn {
+            background-color: #c62828;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .return-btn:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Issue / Return Books</h1>
+    </header>
+
+    
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="members.html">Members</a>
+        <a href="issue_return.html">Issue/Return</a>
+        <a href="contact.html">Contact</a>
+        <a href="search_books.html">Search Books</a>
+        <a href="admin_login.html">Admin Login</a>
+    </nav>
+
+    <div class="container">
+        <h2>Currently Issued Books</h2>
+        <table id="issueTable">
+            <thead>
+                <tr>
+                    <th>Member Name</th>
+                    <th>Book Title</th>
+                    <th>Issue Date</th>
+                    <th>Return</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anjali Sharma</td>
+                    <td>The Alchemist</td>
+                    <td>2025-04-01</td>
+                    <td><button class="return-btn" onclick="returnBook(this)">Return</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="form-box">
+            <h2>Issue a Book</h2>
+            <input type="text" id="memberName" placeholder="Member Name">
+            <input type="text" id="bookTitle" placeholder="Book Title">
+            <input type="date" id="issueDate">
+            <button onclick="issueBook()">Issue Book</button>
+        </div>
+    </div>
+
+    <script>
+        function issueBook() {
+            const member = document.getElementById("memberName").value;
+            const book = document.getElementById("bookTitle").value;
+            const date = document.getElementById("issueDate").value;
+
+            if (member && book && date) {
+                const table = document.getElementById("issueTable").getElementsByTagName("tbody")[0];
+                const newRow = table.insertRow();
+                newRow.innerHTML = `
+                    <td>${member}</td>
+                    <td>${book}</td>
+                    <td>${date}</td>
+                    <td><button class="return-btn" onclick="returnBook(this)">Return</button></td>
+                `;
+
+                // Clear inputs
+                document.getElementById("memberName").value = "";
+                document.getElementById("bookTitle").value = "";
+                document.getElementById("issueDate").value = "";
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+
+        function returnBook(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+</body>
+</html>

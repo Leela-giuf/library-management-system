@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #0059b3;
+        }
+
+        .container {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 25px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-box h3 {
+            margin-top: 0;
+            color: #004080;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Library Management System</h1>
+    </header>
+
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="members.html">Members</a>
+        <a href="issue_return.html">Issue/Return</a>
+        <a href="contact.html">Contact</a>
+        <a href="search_books.html">Search Books</a>
+        <a href="admin_login.html">Admin Login</a>
+    </nav>
+
+
+    <div class="container">
+        <h2>Explore Features</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3><a href="search_books.html">Search Books</a></h3>
+                <p>Find any book by title, author, or category.</p>
+            </div>
+            <div class="feature-box">
+                <h3><a href="manage_members.html">Manage Members</a></h3>
+                <p>Add, update, or delete library members.</p>
+            </div>
+            <div class="feature-box">
+                <h3><a href="issue&return.html">Issue & Return</a></h3>
+                <p>Track book lending and return dates.</p>
+            </div>
+            <div class="feature-box">
+                <h3><a href="reports.html">Reports</a></h3>
+                <p>Generate reports for inventory and usage.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Library Management System 
+    </footer>
+
+</body>
+</html>

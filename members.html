@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Members - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #0059b3;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        .add-member-form {
+            margin-top: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 400px;
+        }
+
+        .add-member-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        .add-member-form button {
+            padding: 10px 15px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-member-form button:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Library Members</h1>
+    </header>
+
+    
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="members.html">Members</a>
+        <a href="issue_return.html">Issue/Return</a>
+        <a href="contact.html">Contact</a>
+        <a href="search_books.html">Search Books</a>
+        <a href="admin_login.html">Admin Login</a>
+    </nav>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchMember" placeholder="Search by name or email..." onkeyup="searchMembers()">
+        </div>
+
+        <table id="membersTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Member ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anjali Sharma</td>
+                    <td>anjali.sharma@email.com</td>
+                    <td>9876543210</td>
+                    <td>M001</td>
+                </tr>
+                <tr>
+                    <td>Ravi Kumar</td>
+                    <td>ravi.kumar@email.com</td>
+                    <td>9123456789</td>
+                    <td>M002</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="add-member-form">
+            <h2>Add New Member</h2>
+            <input type="text" id="memberName" placeholder="Full Name">
+            <input type="email" id="memberEmail" placeholder="Email">
+            <input type="text" id="memberPhone" placeholder="Phone Number">
+            <input type="text" id="memberID" placeholder="Member ID">
+            <button onclick="addMember()">Add Member</button>
+        </div>
+    </div>
+
+    <script>
+        function searchMembers() {
+            const input = document.getElementById("searchMember").value.toLowerCase();
+            const rows = document.querySelectorAll("#membersTable tbody tr");
+
+            rows.forEach(row => {
+                const name = row.cells[0].innerText.toLowerCase();
+                const email = row.cells[1].innerText.toLowerCase();
+                row.style.display = (name.includes(input) || email.includes(input)) ? "" : "none";
+            });
+        }
+
+        function addMember() {
+            const name = document.getElementById("memberName").value;
+            const email = document.getElementById("memberEmail").value;
+            const phone = document.getElementById("memberPhone").value;
+            const id = document.getElementById("memberID").value;
+
+            if (name && email && phone && id) {
+                const table = document.getElementById("membersTable").getElementsByTagName("tbody")[0];
+                const newRow = table.insertRow();
+                newRow.innerHTML = `<td>${name}</td><td>${email}</td><td>${phone}</td><td>${id}</td>`;
+
+                // Clear form fields
+                document.getElementById("memberName").value = "";
+                document.getElementById("memberEmail").value = "";
+                document.getElementById("memberPhone").value = "";
+                document.getElementById("memberID").value = "";
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+
+</body>
+</html>

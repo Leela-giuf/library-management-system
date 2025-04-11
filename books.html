@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #0059b3;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        .add-book-form {
+            margin-top: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 400px;
+        }
+
+        .add-book-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        .add-book-form button {
+            padding: 10px 15px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-book-form button:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Books in Library</h1>
+    </header>
+
+   
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="members.html">Members</a>
+        <a href="issue_return.html">Issue/Return</a>
+        <a href="contact.html">Contact</a>
+        <a href="search_books.html">Search Books</a>
+        <a href="admin_login.html">Admin Login</a>
+    </nav>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by title or author..." onkeyup="searchBooks()">
+        </div>
+
+        <table id="booksTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>ISBN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>The Alchemist</td>
+                    <td>Paulo Coelho</td>
+                    <td>Fiction</td>
+                    <td>9780061122415</td>
+                </tr>
+                <tr>
+                    <td>Atomic Habits</td>
+                    <td>James Clear</td>
+                    <td>Self-help</td>
+                    <td>9780735211292</td>
+                </tr>
+                <tr>
+                    <td>Clean Code</td>
+                    <td>Robert C. Martin</td>
+                    <td>Programming</td>
+                    <td>9780132350884</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="add-book-form">
+            <h2>Add New Book</h2>
+            <input type="text" id="bookTitle" placeholder="Book Title">
+            <input type="text" id="bookAuthor" placeholder="Author">
+            <input type="text" id="bookCategory" placeholder="Category">
+            <input type="text" id="bookISBN" placeholder="ISBN">
+            <button onclick="addBook()">Add Book</button>
+        </div>
+    </div>
+
+    <script>
+        function searchBooks() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const rows = document.querySelectorAll("#booksTable tbody tr");
+
+            rows.forEach(row => {
+                const title = row.cells[0].innerText.toLowerCase();
+                const author = row.cells[1].innerText.toLowerCase();
+                row.style.display = (title.includes(input) || author.includes(input)) ? "" : "none";
+            });
+        }
+
+        function addBook() {
+            const title = document.getElementById("bookTitle").value;
+            const author = document.getElementById("bookAuthor").value;
+            const category = document.getElementById("bookCategory").value;
+            const isbn = document.getElementById("bookISBN").value;
+
+            if (title && author && category && isbn) {
+                const table = document.getElementById("booksTable").getElementsByTagName("tbody")[0];
+                const newRow = table.insertRow();
+                newRow.innerHTML = `<td>${title}</td><td>${author}</td><td>${category}</td><td>${isbn}</td>`;
+
+                // Clear form
+                document.getElementById("bookTitle").value = "";
+                document.getElementById("bookAuthor").value = "";
+                document.getElementById("bookCategory").value = "";
+                document.getElementById("bookISBN").value = "";
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+
+</body>
+</html>

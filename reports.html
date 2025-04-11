@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Reports - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #003366;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #0059b3;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .issued {
+            color: green;
+        }
+
+        .available {
+            color: red;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background-color: #003366;
+        }
+
+        .report-heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #004080;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Library Reports</h1>
+    </header>
+
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="members.html">Members</a>
+        <a href="manage_members.html">Manage Members</a>
+        <a href="contact.html">Contact</a>
+        <a href="search_books.html">Search Books</a>
+        <a href="admin_login.html">Admin Login</a>
+        <a href="issue_return.html">Issue/Return</a>
+        <a href="reports.html">Reports</a>
+    </nav>
+
+    <div class="container">
+        <!-- Books Report Section -->
+        <div class="report-section">
+            <h2 class="report-heading">Books Report</h2>
+            <table id="booksReportTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example books data (will be generated dynamically) -->
+                    <tr>
+                        <td>1984</td>
+                        <td>George Orwell</td>
+                        <td class="status available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>The Alchemist</td>
+                        <td>Paulo Coelho</td>
+                        <td class="status issued">Issued</td>
+                    </tr>
+                    <tr>
+                        <td>Atomic Habits</td>
+                        <td>James Clear</td>
+                        <td class="status available">Available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Members Report Section -->
+        <div class="report-section">
+            <h2 class="report-heading">Members Report</h2>
+            <table id="membersReportTable">
+                <thead>
+                    <tr>
+                        <th>Member Name</th>
+                        <th>Email</th>
+                        <th>Books Issued</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example members data (this can be dynamic) -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>johndoe@example.com</td>
+                        <td>1984</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>janesmith@example.com</td>
+                        <td>The Alchemist</td>
+                    </tr>
+                    <tr>
+                        <td>Mary Johnson</td>
+                        <td>maryj@example.com</td>
+                        <td>No books issued</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Transaction Report Section -->
+        <div class="report-section">
+            <h2 class="report-heading">Transaction Report</h2>
+            <table id="transactionReportTable">
+                <thead>
+                    <tr>
+                        <th>Member Name</th>
+                        <th>Book Title</th>
+                        <th>Issue Date</th>
+                        <th>Return Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example transactions data (this can be dynamic) -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>1984</td>
+                        <td>2025-04-01</td>
+                        <td>2025-04-15</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>The Alchemist</td>
+                        <td>2025-04-05</td>
+                        <td>2025-04-19</td>
+                    </tr>
+                    <tr>
+                        <td>Mary Johnson</td>
+                        <td>Atomic Habits</td>
+                        <td>2025-04-10</td>
+                        <td>Not Returned Yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // You can dynamically generate reports here based on data from your backend.
+    </script>
+
+</body>
+</html>
